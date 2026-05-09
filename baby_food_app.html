@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>離乳食ガイド</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink-50:#fff0f5;--pink-100:#ffd6e7;--pink-200:#ffadd0;--pink-400:#f472a8;--pink-600:#c2185b;--pink-800:#880e4f;
+  --peach-50:#fff8f0;--peach-100:#ffe8cc;--peach-200:#ffd09e;--peach-400:#f5a05a;--peach-600:#e07028;--peach-800:#8d4010;
+  --sage-50:#f0faf4;--sage-100:#c8edda;--sage-200:#8fd4b0;--sage-400:#4cad7e;--sage-600:#2d7a56;--sage-800:#1a5238;
+  --cream:#fdf8f3;--warm-white:#fffcf9;--text-dark:#3a2e28;--text-mid:#7a6a62;--text-muted:#b0a098;
+  --border-soft:#f0e4da;--border-mid:#e8d0c4;
+}
+body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;background:var(--cream);color:var(--text-dark);min-height:100vh}
+.app{max-width:720px;margin:0 auto;padding:0}
+
+/* ─── Header ─── */
+.app-header{background:linear-gradient(135deg,#fff0f5 0%,#fff8f0 50%,#f0faf4 100%);padding:1.5rem 1.25rem 1rem;border-bottom:1.5px solid var(--border-soft)}
+.header-row{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.header-icon{font-size:32px;line-height:1}
+.header-text h1{font-size:20px;font-weight:700;color:var(--text-dark);letter-spacing:-0.01em}
+.header-text .subtitle{font-size:12px;color:var(--text-muted);margin-top:2px}
+.notice{font-size:11px;color:var(--text-mid);background:#fff8f0;border:1px solid var(--peach-100);border-radius:12px;padding:10px 14px;margin-top:12px;line-height:1.75}
+.notice a{color:var(--peach-600);text-decoration:none;border-bottom:1px dashed var(--peach-400)}
+
+/* ─── Tabs ─── */
+.tabs-wrap{padding:1rem 1.25rem 0;background:var(--warm-white);border-bottom:1px solid var(--border-soft)}
+.tabs{display:flex;gap:0}
+.tab{padding:10px 20px;border:none;background:none;cursor:pointer;font-size:13px;font-weight:500;color:var(--text-muted);font-family:inherit;border-bottom:2.5px solid transparent;transition:all 0.2s;white-space:nowrap}
+.tab:hover{color:var(--pink-600)}
+.tab.active{color:var(--pink-600);border-bottom-color:var(--pink-400)}
+
+/* ─── Content area ─── */
+.content-area{padding:1rem 1.25rem}
+
+/* ─── Filter pills ─── */
+.filter-row{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
+.filter-btn{padding:6px 14px;border:1.5px solid var(--border-soft);border-radius:999px;background:var(--warm-white);cursor:pointer;font-size:12px;color:var(--text-mid);font-family:inherit;transition:all 0.2s;font-weight:400}
+.filter-btn:hover{border-color:var(--pink-200);color:var(--pink-800);background:var(--pink-50)}
+.filter-btn.active{background:var(--pink-100);color:var(--pink-800);border-color:var(--pink-200);font-weight:500}
+
+/* ─── Search ─── */
+.search-wrap{position:relative;margin-bottom:1rem}
+.search-wrap input{width:100%;padding:11px 16px 11px 40px;border:1.5px solid var(--border-soft);border-radius:999px;background:var(--warm-white);font-size:14px;color:var(--text-dark);font-family:inherit;outline:none;transition:all 0.2s}
+.search-wrap input:focus{border-color:var(--pink-300,#f9a8d4);background:#fff}
+.search-wrap input::placeholder{color:var(--text-muted)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:15px;pointer-events:none}
+.result-count{font-size:12px;color:var(--text-muted);margin-bottom:10px}
+
+/* ─── Cards ─── */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px}
+.card{background:var(--warm-white);border:1.5px solid var(--border-soft);border-radius:20px;padding:12px 14px;cursor:pointer;transition:all 0.22s;position:relative;overflow:hidden;display:flex;align-items:flex-start;gap:10px}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pink-200),var(--peach-200));opacity:0;transition:opacity 0.2s}
+.card:hover{border-color:var(--pink-200);transform:translateY(-2px);background:#fff}
+.card:hover::before{opacity:1}
+.card-body{flex:1;min-width:0}
+.card-name{font-size:13px;font-weight:700;color:var(--text-dark);line-height:1.3;margin-bottom:5px}
+.em-wrap{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;line-height:1}
+.card-badges{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;padding:3px 9px;border-radius:999px;font-weight:500;line-height:1.4}
+.bg{background:var(--sage-100);color:var(--sage-800)}
+.ba{background:#fff3e0;color:#8d4010}
+.br{background:#fce4ec;color:#880e4f}
+.al1{background:#fce4ec;color:#880e4f;border:1px solid var(--pink-200)}
+.al2{background:#fff3e0;color:#8d4010;border:1px solid var(--peach-200)}
+.card-desc{font-size:11px;color:var(--text-mid);line-height:1.65}
+
+/* ─── Legend ─── */
+.al-legend{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;padding:10px 14px;background:var(--warm-white);border:1.5px solid var(--border-soft);border-radius:14px}
+.al-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-mid)}
+
+/* ─── Detail view ─── */
+.back-btn{font-size:13px;color:var(--text-mid);cursor:pointer;margin-bottom:1rem;display:inline-flex;align-items:center;gap:5px;padding:7px 16px;background:var(--warm-white);border:1.5px solid var(--border-soft);border-radius:999px;font-family:inherit;transition:all 0.2s;font-weight:500}
+.back-btn:hover{background:var(--pink-50);border-color:var(--pink-200);color:var(--pink-800)}
+.detail{background:var(--warm-white);border:1.5px solid var(--border-soft);border-radius:22px;padding:1.5rem;margin-bottom:1rem;overflow:hidden}
+.detail-header{display:flex;align-items:center;gap:16px;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1.5px solid var(--border-soft)}
+.detail-emoji-wrap{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:34px;line-height:1}
+.detail-title{font-size:20px;font-weight:700;color:var(--text-dark)}
+.detail-sub{font-size:13px;color:var(--text-muted);margin-top:4px}
+.sec{margin-bottom:1.25rem}
+.sec-label{font-size:10px;font-weight:700;color:var(--text-muted);margin-bottom:8px;letter-spacing:0.08em;text-transform:uppercase}
+.tag-row{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11px;padding:5px 13px;border-radius:999px;border:1.5px solid var(--border-soft);color:var(--text-mid);background:var(--cream);cursor:default}
+
+/* ─── Process steps ─── */
+.steps{display:flex;align-items:flex-start;gap:0;flex-direction:column;gap:4px}
+.step-item{display:flex;align-items:flex-start;gap:10px}
+.step-num{width:22px;height:22px;border-radius:50%;background:var(--pink-100);color:var(--pink-800);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-text{font-size:12px;color:var(--text-mid);line-height:1.7;padding-top:2px}
+
+/* ─── Nutrients grid ─── */
+.ngrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ni{background:var(--cream);border-radius:14px;padding:10px 13px;border:1.5px solid var(--border-soft)}
+.nn{font-size:10px;color:var(--text-muted);font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px}
+.ne{font-size:12px;color:var(--text-dark);line-height:1.65}
+.nnote{font-size:10px;color:var(--text-muted);margin-top:4px;line-height:1.55;padding-top:4px;border-top:1px dashed var(--border-soft)}
+
+/* ─── Allergy box ─── */
+.al-box{border-radius:14px;padding:12px 15px;margin-bottom:4px}
+.al-box.lv0{background:var(--sage-50);border:1.5px solid var(--sage-100)}
+.al-box.lv1{background:#fce4ec;border:1.5px solid var(--pink-200)}
+.al-box.lv2{background:#fff3e0;border:1.5px solid var(--peach-200)}
+.al-box-title{font-size:12px;font-weight:700;margin-bottom:5px}
+.al-box.lv0 .al-box-title{color:var(--sage-800)}
+.al-box.lv1 .al-box-title{color:var(--pink-800)}
+.al-box.lv2 .al-box-title{color:var(--peach-800)}
+.al-box-body{font-size:11px;line-height:1.75;color:var(--text-mid)}
+
+/* ─── Stage view ─── */
+.stage-sec{margin-bottom:1.75rem}
+.stage-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:10px;border-bottom:1.5px solid var(--border-soft)}
+.stage-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.stage-title{font-size:15px;font-weight:700;color:var(--text-dark)}
+.stage-month-badge{font-size:11px;padding:3px 10px;border-radius:999px;background:var(--peach-50);color:var(--peach-800);border:1px solid var(--peach-100);font-weight:500}
+.stage-desc{font-size:12px;color:var(--text-mid);margin-bottom:12px;line-height:1.7;padding:8px 12px;background:var(--warm-white);border-radius:10px;border:1px solid var(--border-soft)}
+
+/* ─── Nutrient guide ─── */
+.nutrient-card{background:var(--warm-white);border:1.5px solid var(--border-soft);border-radius:18px;padding:1.25rem;margin-bottom:10px}
+.nutrient-name{font-size:16px;font-weight:700;color:var(--text-dark);margin-bottom:6px}
+.nutrient-effect{font-size:12px;color:var(--text-mid);margin-bottom:12px;line-height:1.75}
+
+/* ─── Empty ─── */
+.empty{text-align:center;padding:3rem 1rem;color:var(--text-muted);font-size:14px}
+.empty-icon{font-size:40px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="app-header">
+    <div class="header-row">
+      <span class="header-icon">🍼</span>
+      <div class="header-text">
+        <h1>離乳食ガイド</h1>
+        <div class="subtitle">食材・栄養素・アレルギー情報を検索できます</div>
+      </div>
+    </div>
+    <div class="notice">
+      ※ このアプリの情報は参考用です。月齢・食材の判断は必ず小児科医および<a href="https://www.mhlw.go.jp/stf/newpage_27199.html" target="_blank">厚生労働省「授乳・離乳の支援ガイド（2019年改定版）」</a>を参照してください。アレルギーの有無は個人差があります。初めて与える食材は必ず少量から始め体調の変化を観察してください。
+    </div>
+  </div>
+  <div class="tabs-wrap">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-tab="list">🥕 食品一覧</button>
+      <button class="tab" data-tab="stage">📅 時期別</button>
+      <button class="tab" data-tab="nutrients">✨ 栄養素ガイド</button>
+    </div>
+  </div>
+  <div class="content-area">
+    <div id="filters"></div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="食材・栄養素・アレルギーで検索..." />
+    </div>
+    <div id="content"></div>
+  </div>
+</div>
+<footer style="text-align:center;padding:1.5rem 1rem 2rem;margin-top:1rem;border-top:1px solid var(--border-soft)">
+  <p style="font-size:11px;color:var(--text-muted);margin-bottom:6px">本アプリの情報は参考用です。食材の判断は必ず小児科医にご相談ください。</p>
+  <p style="font-size:11px;color:var(--text-muted)">
+    <a href="privacy.html" style="color:var(--text-muted);text-decoration:underline">プライバシーポリシー</a>
+    　|　
+    <a href="https://github.com/yutas-gif/baby-food-guide/issues" target="_blank" style="color:var(--text-muted);text-decoration:underline">お問い合わせ</a>
+  </p>
+  <p style="font-size:10px;color:var(--text-muted);margin-top:8px">© 2026 離乳食ガイド</p>
+</footer>
+<script>
+const CATEGORIES=["すべて","穀類","いも類","野菜","葉物野菜","果物","魚介類","肉類","大豆製品","卵・乳製品"];
+
+const FOODS=[
+{id:1,name:"白米（お粥）",emoji:"🌾",stage:"初期",stageMonth:"5〜6ヶ月",category:"穀類",allergy:null,allergyName:null,allergyNote:null,nutrients:["でんぷん","ビタミンB1","少量のたんぱく質"],effects:{でんぷん:"乳幼児の主要なエネルギー源",ビタミンB1:"糖質の代謝に関わるビタミンの供給源",少量のたんぱく質:"体の組織の構成に必要な栄養素を微量含む"},notes:{},process:["米1：水10の割合","とろとろになるまで煮る","10倍がゆ→7倍→5倍と段階的に"],tags:["最初の食材","主食","アレルギーなし"],note:"離乳食はおかゆからスタート。段階的に水分を減らす。"},
+{id:2,name:"うどん",emoji:"🌾",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"穀類",allergy:1,allergyName:"小麦",allergyNote:"小麦は特定原材料8品目のひとつ（表示義務）。初めては少量から。茹でた後は流水でぬめりと塩分を十分に洗い流すこと。",nutrients:["でんぷん","少量のたんぱく質"],effects:{でんぷん:"乳幼児のエネルギー源",少量のたんぱく質:"体の組織の構成に必要な栄養素を微量含む"},notes:{},process:["やわらかく茹でる","流水で塩分・ぬめり除去","5mm以下に刻む","だし汁でさらに煮る"],tags:["特定原材料（小麦）","塩分除去必要"],note:"塩分が多いため必ず茹でこぼすこと。"},
+{id:3,name:"食パン",emoji:"🌾",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"穀類",allergy:1,allergyName:"小麦・乳（製品により卵も）",allergyNote:"小麦（表示義務）と乳（表示義務）の両方を含む。製品によっては卵も含むため原材料表示を必ず確認すること。",nutrients:["でんぷん","たんぱく質","脂質"],effects:{でんぷん:"エネルギー源",たんぱく質:"体の組織の構成に必要な栄養素を含む",脂質:"脂溶性ビタミンの吸収を助けるエネルギー源"},notes:{},process:["耳を取り除く","ミルクや湯でふやかす（初期）","細かくちぎる（中期以降）"],tags:["特定原材料（小麦・乳）","耳は除く","原材料確認"],note:"耳は除く。塩分・砂糖が含まれるため量に注意。"},
+{id:4,name:"そうめん",emoji:"🌾",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"穀類",allergy:1,allergyName:"小麦",allergyNote:"小麦は特定原材料8品目のひとつ（表示義務）。塩分が多いため十分な塩抜きが必要。",nutrients:["でんぷん","少量のたんぱく質"],effects:{でんぷん:"エネルギー源",少量のたんぱく質:"体の組織の構成に必要な栄養素を微量含む"},notes:{},process:["たっぷりの湯で柔らかく茹でる","流水でよく洗い塩分除去","1〜2cmに刻む","だし汁でさらに煮る"],tags:["特定原材料（小麦）","塩抜き必須"],note:"塩分が多いため十分に洗い流すこと。"},
+{id:5,name:"オートミール",emoji:"🌾",stage:"初期",stageMonth:"5〜6ヶ月",category:"穀類",allergy:null,allergyName:null,allergyNote:"グルテンフリー穀物だが製造ラインで小麦と共用の製品もある。小麦アレルギーがある場合はグルテンフリー認証品を選ぶこと。",nutrients:["食物繊維","でんぷん","たんぱく質","鉄分","ビタミンB1"],effects:{食物繊維:"腸内環境に関わる栄養素を含む",でんぷん:"エネルギー源",たんぱく質:"体の組織の構成に必要な栄養素の供給源",鉄分:"植物性鉄分（非ヘム鉄）を含む",ビタミンB1:"糖質代謝に関わるビタミンの供給源"},notes:{},process:["ロールドオーツを選ぶ","湯または水で煮る","とろとろになるまで加熱"],tags:["鉄分含む","食物繊維豊富","製造ライン注意"],note:"米がゆの代わりに使える。ロールドオーツが扱いやすい。"},
+{id:6,name:"ビーフン",emoji:"🌾",stage:"中期",stageMonth:"7〜8ヶ月",category:"穀類",allergy:null,allergyName:null,allergyNote:"原料は米のため基本的にグルテンフリー。ただし製品によっては小麦が含まれる場合があるため原材料表示を確認すること。",nutrients:["でんぷん","少量のたんぱく質"],effects:{でんぷん:"エネルギー源",少量のたんぱく質:"体の組織の構成に必要な栄養素を微量含む"},notes:{},process:["熱湯でやわらかく戻す","短く切る（1〜2cm）","だし汁や野菜と煮る"],tags:["米原料","グルテンフリー（製品確認）"],note:"小麦アレルギーの子の麺類代替として使いやすい。"},
+{id:7,name:"米粉",emoji:"🌾",stage:"初期",stageMonth:"5〜6ヶ月",category:"穀類",allergy:null,allergyName:null,allergyNote:"原料は米のためグルテンフリー。製品によっては小麦と同製造ラインの場合があるため確認を。",nutrients:["でんぷん","少量のたんぱく質"],effects:{でんぷん:"乳幼児のエネルギー源",少量のたんぱく質:"体の組織の構成に必要な栄養素を微量含む"},notes:{},process:["湯または液体と合わせて加熱","とろみづけや料理のつなぎに","パン・お焼きの材料にも使える"],tags:["グルテンフリー","小麦代替","とろみづけに便利"],note:"小麦の代替として活用できる。"},
+{id:8,name:"さつまいも",emoji:"🥔",stage:"初期",stageMonth:"5〜6ヶ月",category:"いも類",allergy:null,allergyName:null,allergyNote:null,nutrients:["βカロテン","食物繊維","ビタミンC","カリウム"],effects:{βカロテン:"体内でビタミンAに変換される。皮膚・粘膜の維持や視力に関わる栄養素の供給源",食物繊維:"腸内環境に関わる栄養素を含む",ビタミンC:"鉄分の吸収を助ける働きを持つビタミンの供給源",カリウム:"体内の電解質バランスに関わるミネラルの供給源"},notes:{},process:["皮をむく","柔らかく蒸す／ゆでる","つぶす","裏ごしする","湯で薄めてのばす"],tags:["甘みがある","受け入れやすい","アレルギー少ない"],note:"甘みが強く受け入れやすい最初の食材のひとつ。"},
+{id:9,name:"じゃがいも",emoji:"🥔",stage:"初期",stageMonth:"5〜6ヶ月",category:"いも類",allergy:null,allergyName:null,allergyNote:null,nutrients:["ビタミンC","カリウム","食物繊維","でんぷん"],effects:{ビタミンC:"加熱に比較的強く、でんぷんに守られて残りやすい。鉄分吸収を助ける",カリウム:"体内の電解質バランスに関わるミネラルの供給源",食物繊維:"腸内環境に関わる栄養素を含む",でんぷん:"乳幼児の主要なエネルギー源"},notes:{},process:["皮をむく","一口大に切る","柔らかく茹でる","マッシュする","湯や野菜スープでのばす"],tags:["クセなし","エネルギー源"],note:"エネルギー源として優秀。クセがなく使いやすい。"},
+{id:10,name:"里芋",emoji:"🥔",stage:"中期",stageMonth:"7〜8ヶ月",category:"いも類",allergy:null,allergyName:null,allergyNote:"シュウ酸カルシウムによる皮膚・口腔内のかゆみが出る場合がある。加熱することでかゆみ成分は大幅に軽減される。",nutrients:["食物繊維","カリウム","ビタミンB1"],effects:{食物繊維:"腸内環境に関わる水溶性食物繊維を含む",カリウム:"電解質バランスに関わるミネラルの供給源",ビタミンB1:"糖質代謝に関わるビタミンの供給源"},notes:{},process:["皮をむく（手袋推奨）","よく加熱する","ペースト状にする"],tags:["かゆみ注意（加熱で軽減）","ぬめりあり"],note:"必ず十分加熱すること。皮むき時は手のかゆみに注意。"},
+{id:11,name:"長芋・山芋",emoji:"🥔",stage:"後期",stageMonth:"9〜11ヶ月",category:"いも類",allergy:null,allergyName:null,allergyNote:"生の長芋・山芋はシュウ酸カルシウムによる口腔・皮膚のかゆみを引き起こすことがある。加熱するとかゆみ成分は大幅に軽減される。乳幼児には必ず加熱して与えること。",nutrients:["でんぷん","カリウム","ビタミンB1"],effects:{でんぷん:"エネルギー源",カリウム:"電解質バランスに関わるミネラルの供給源",ビタミンB1:"糖質代謝に関わるビタミンの供給源"},notes:{},process:["必ず加熱して与える","皮をむく","加熱後すりおろすまたはつぶす","とろみとして粥や野菜に混ぜる"],tags:["加熱必須","かゆみ注意","後期から"],note:"生では口腔・皮膚にかゆみが出ることがある。必ず加熱すること。"},
+{id:12,name:"かぼちゃ",emoji:"🥕",stage:"初期",stageMonth:"5〜6ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["βカロテン","ビタミンE","食物繊維","ビタミンC"],effects:{βカロテン:"体内でビタミンAに変換される。皮膚・粘膜の維持や視力に関わる栄養素の供給源",ビタミンE:"抗酸化作用を持つビタミンの供給源",食物繊維:"腸内環境に関わる栄養素を含む",ビタミンC:"鉄分の吸収を助ける働きを持つビタミンの供給源"},notes:{},process:["種・皮を除く","柔らかく煮る","フォークでつぶす","裏ごして滑らかに"],tags:["甘み強い","栄養豊富"],note:"βカロテンが豊富。甘くて口当たりが良い。"},
+{id:13,name:"にんじん",emoji:"🥕",stage:"初期",stageMonth:"5〜6ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["βカロテン","カリウム","食物繊維"],effects:{βカロテン:"野菜の中でもトップクラスの含有量。体内でビタミンAに変換され皮膚・粘膜の維持や視力に関わる",カリウム:"体内の電解質バランスに関わるミネラルの供給源",食物繊維:"腸内環境に関わる栄養素を含む"},notes:{},process:["皮をむく","薄切り","やわらかく煮る","すりつぶす","裏ごし→ペースト状"],tags:["βカロテン豊富","定番野菜"],note:"βカロテンを特に豊富に含む定番野菜。"},
+{id:14,name:"トマト",emoji:"🥕",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:"特定原材料・準ずる品目に含まれないが、酸味や種・皮が消化器に刺激を与えることがある。初めては少量から。",nutrients:["ビタミンC","カリウム","葉酸"],effects:{ビタミンC:"鉄分吸収を助けるビタミンの供給源",カリウム:"電解質バランスに関わるミネラルの供給源",葉酸:"細胞分裂・DNA合成に必要なビタミンB群の供給源"},notes:{},process:["湯むきで皮を除く","種を取り除く","加熱してペースト状に"],tags:["皮・種除く","酸味注意","加熱推奨"],note:"皮と種を必ず取り除く。酸味が強いため加熱して与えること。"},
+{id:15,name:"玉ねぎ",emoji:"🥕",stage:"初期",stageMonth:"5〜6ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["ビタミンC","食物繊維","カリウム"],effects:{ビタミンC:"鉄分吸収を助けるビタミンの供給源",食物繊維:"腸内環境に関わる栄養素を含む",カリウム:"電解質バランスに関わるミネラルの供給源"},notes:{},process:["皮をむく","薄切り","十分に加熱して甘みを出す","ペーストまたはみじん切り"],tags:["加熱で甘くなる","スープに便利"],note:"十分に加熱すると甘みが増し食べやすくなる。"},
+{id:16,name:"きゅうり",emoji:"🥕",stage:"中期",stageMonth:"7〜8ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:"口腔アレルギー症候群（OAS）の原因になることがある。シラカバ花粉との交差反応が報告されている。",nutrients:["ビタミンC","カリウム","水分"],effects:{ビタミンC:"鉄分吸収を助けるビタミンの供給源",カリウム:"電解質バランスに関わるミネラルの供給源",水分:"水分補給に寄与"},notes:{ビタミンC:"きゅうりはビタミンCを分解する酵素（アスコルビナーゼ）を含む。加熱か酢と合わせると酵素が不活化される。"},process:["皮をむく","種を取る","加熱してやわらかく","みじん切り"],tags:["加熱推奨","種除く"],note:"生食よりも加熱してから与えることを推奨。"},
+{id:17,name:"とうもろこし",emoji:"🥕",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["でんぷん","食物繊維","ビタミンB1"],effects:{でんぷん:"エネルギー源",食物繊維:"腸内環境に関わる栄養素を含む",ビタミンB1:"糖質代謝に関わるビタミンの供給源"},notes:{},process:["茹でる","粒を外す","薄皮を取り除く（重要）","裏ごしてペースト状に"],tags:["薄皮除去必要","甘い","裏ごし必須"],note:"粒の薄皮が消化しにくいため必ず裏ごしすること。"},
+{id:18,name:"大根",emoji:"🥕",stage:"初期",stageMonth:"5〜6ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["ビタミンC","食物繊維"],effects:{ビタミンC:"鉄分吸収を助けるビタミンの供給源",食物繊維:"腸内環境に関わる栄養素を含む"},notes:{},process:["皮を厚めにむく","やわらかく煮る","ペースト状に"],tags:["消化しやすい","クセなし"],note:"消化にやさしい野菜。クセがなく使いやすい。"},
+{id:19,name:"かぶ",emoji:"🥕",stage:"初期",stageMonth:"5〜6ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["ビタミンC","食物繊維","カリウム"],effects:{ビタミンC:"鉄分吸収を助けるビタミンの供給源",食物繊維:"腸内環境に関わる栄養素を含む",カリウム:"電解質バランスに関わるミネラルの供給源"},notes:{},process:["皮をむく","薄切り","やわらかく煮る","ペースト状に"],tags:["クセなし","やわらかくなりやすい"],note:"やわらかくなりやすく調理しやすい。"},
+{id:20,name:"アスパラガス",emoji:"🥕",stage:"中期",stageMonth:"7〜8ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["葉酸","ビタミンC","食物繊維"],effects:{葉酸:"細胞分裂・DNA合成に必要なビタミンB群の供給源",ビタミンC:"鉄分吸収を助けるビタミンの供給源",食物繊維:"腸内環境に関わる栄養素を含む"},notes:{},process:["穂先のやわらかい部分を使う","根元の硬い皮をむく","やわらかく茹でる","みじん切り→ペースト"],tags:["穂先のみ使用","葉酸含む"],note:"穂先のやわらかい部分のみ使う。"},
+{id:21,name:"長ねぎ",emoji:"🥕",stage:"中期",stageMonth:"7〜8ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["ビタミンC","食物繊維","カリウム"],effects:{ビタミンC:"鉄分吸収を助けるビタミンの供給源",食物繊維:"腸内環境に関わる栄養素を含む",カリウム:"電解質バランスに関わるミネラルの供給源"},notes:{},process:["白い部分を使う","十分に加熱する","細かく刻む","スープや粥に混ぜる"],tags:["加熱で甘くなる","スープ向き"],note:"十分に加熱すると甘みが出て食べやすくなる。"},
+{id:22,name:"ズッキーニ",emoji:"🥕",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["βカロテン","ビタミンC","カリウム","食物繊維"],effects:{βカロテン:"体内でビタミンAに変換される栄養素の供給源",ビタミンC:"鉄分吸収を助けるビタミンの供給源",カリウム:"電解質バランスに関わるミネラルの供給源",食物繊維:"腸内環境に関わる栄養素を含む"},notes:{},process:["皮をむく（初期）","種を取る","やわらかく茹でる","ペーストまたはみじん切り"],tags:["クセなし","やわらかくなりやすい"],note:"かぼちゃより水分が多い。クセがなく合わせやすい。"},
+{id:23,name:"なす",emoji:"🥕",stage:"中期",stageMonth:"7〜8ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:"シラカバ花粉や口腔アレルギー症候群との関連が報告されている。初めては少量から。",nutrients:["食物繊維","カリウム","ビタミンC"],effects:{食物繊維:"腸内環境に関わる栄養素を含む",カリウム:"電解質バランスに関わるミネラルの供給源",ビタミンC:"鉄分吸収を助けるビタミンを微量含む"},notes:{},process:["皮をむく","アク抜きのため水にさらす","十分に加熱する","ペーストまたはみじん切り"],tags:["アク抜き推奨","皮は除く"],note:"皮を除き十分に加熱すること。"},
+{id:24,name:"パプリカ",emoji:"🥕",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["ビタミンC","βカロテン","ビタミンE","カリウム"],effects:{ビタミンC:"野菜の中でも含有量が多い。鉄分吸収を助けるビタミンの供給源",βカロテン:"体内でビタミンAに変換される栄養素の供給源",ビタミンE:"抗酸化作用を持つビタミンの供給源",カリウム:"電解質バランスに関わるミネラルの供給源"},notes:{},process:["皮を除く（湯むきまたはオーブン）","種・ワタを取る","やわらかく煮る","ペーストまたはみじん切り"],tags:["ビタミンC豊富","皮は除く","甘みあり"],note:"皮が硬く消化しにくいため必ず除くこと。"},
+{id:25,name:"枝豆",emoji:"🥕",stage:"後期",stageMonth:"9〜11ヶ月",category:"野菜",allergy:2,allergyName:"大豆",allergyNote:"枝豆は大豆の未熟豆。大豆は特定原材料に準ずる20品目のひとつ（表示推奨）。大豆アレルギーがある場合は注意。薄皮が消化しにくいため必ず取り除くこと。",nutrients:["たんぱく質","食物繊維","葉酸","ビタミンC","鉄分"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源",食物繊維:"腸内環境に関わる栄養素を含む",葉酸:"細胞分裂・DNA合成に必要なビタミンB群の供給源",ビタミンC:"鉄分吸収を助けるビタミンの供給源",鉄分:"植物性鉄分（非ヘム鉄）を含む"},notes:{},process:["茹でる","さやから出す","薄皮を丁寧に除く","すりつぶすまたはみじん切り"],tags:["準ずる品目（大豆）","薄皮除去必須","後期から"],note:"薄皮が消化しにくいため必ず除くこと。"},
+{id:26,name:"レンコン",emoji:"🥕",stage:"後期",stageMonth:"9〜11ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["ビタミンC","食物繊維","カリウム"],effects:{ビタミンC:"でんぷんに守られて加熱に比較的強い。鉄分吸収を助けるビタミンの供給源",食物繊維:"腸内環境に関わる栄養素を含む",カリウム:"電解質バランスに関わるミネラルの供給源"},notes:{},process:["皮をむく","水にさらしてアク除去","やわらかく茹でる","みじん切りまたはすりおろし"],tags:["アク抜き必要","後期から"],note:"繊維が多いためよく刻むこと。"},
+{id:27,name:"ごぼう",emoji:"🥕",stage:"後期",stageMonth:"9〜11ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["食物繊維","カリウム","マグネシウム"],effects:{食物繊維:"腸内細菌のエサになる水溶性食物繊維（イヌリン）を含む",カリウム:"電解質バランスに関わるミネラルの供給源",マグネシウム:"骨の形成や酵素反応に関わるミネラルの供給源"},notes:{},process:["皮をこそげ取る","水にさらしてアク除去","柔らかく茹でる","みじん切りまたはすりおろし"],tags:["食物繊維豊富","アク抜き必要","後期から"],note:"繊維が多く硬いため後期以降。よく刻んで使う。"},
+{id:28,name:"チンゲン菜",emoji:"🥕",stage:"中期",stageMonth:"7〜8ヶ月",category:"野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["βカロテン","カルシウム","ビタミンC","ビタミンK"],effects:{βカロテン:"体内でビタミンAに変換される栄養素の供給源",カルシウム:"骨・歯の発達に関わるミネラルの供給源",ビタミンC:"鉄分吸収を助けるビタミンの供給源",ビタミンK:"血液凝固と骨の形成に関わるビタミンの供給源"},notes:{},process:["葉の部分を使う","よく洗う","やわらかく茹でる","みじん切り→ペースト"],tags:["アクが少ない","カルシウム含む"],note:"アクが少なく使いやすい緑黄色野菜。"},
+{id:29,name:"ほうれん草",emoji:"🥬",stage:"中期",stageMonth:"7〜8ヶ月",category:"葉物野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["鉄分","葉酸","ビタミンK","βカロテン","カルシウム"],effects:{鉄分:"植物性鉄分（非ヘム鉄）の供給源。ビタミンCと一緒に摂ると吸収されやすくなる",葉酸:"細胞分裂・DNA合成に必要なビタミンB群の供給源",ビタミンK:"血液凝固と骨の形成に関わるビタミンの供給源",βカロテン:"体内でビタミンAに変換される栄養素の供給源",カルシウム:"骨・歯の発達に関わるミネラルの供給源"},notes:{鉄分:"植物性食品の鉄分は動物性より吸収率が低い（非ヘム鉄）。ビタミンCを含む食材と組み合わせると吸収しやすくなる。"},process:["よく洗う","アク抜きのためさっと茹でる","水にさらしてアク除去","葉の部分のみ使用","みじん切り→ペースト"],tags:["鉄分含む","アク抜き必要","葉のみ使用"],note:"アクが強いため下茹でが必須。葉の柔らかい部分だけ使う。"},
+{id:30,name:"ブロッコリー",emoji:"🥬",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"葉物野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["ビタミンC","葉酸","食物繊維","鉄分","カルシウム"],effects:{ビタミンC:"野菜の中でも含有量が多い。鉄分吸収を助けるビタミンの供給源",葉酸:"細胞分裂・DNA合成に必要なビタミンB群の供給源",食物繊維:"腸内環境に関わる栄養素を含む",鉄分:"植物性鉄分（非ヘム鉄）を含む",カルシウム:"骨・歯の発達に関わるミネラルの供給源"},notes:{鉄分:"植物性食品の鉄分は吸収率が低い（非ヘム鉄）。ビタミンCも豊富なため組み合わせとして理にかなった食材。"},process:["小房に分ける","やわらかく茹でる","穂先の部分を使う","みじん切り→ペースト"],tags:["ビタミンC豊富","穂先のみ使用"],note:"茎は硬いので穂先のやわらかい部分のみ使う。"},
+{id:31,name:"小松菜",emoji:"🥬",stage:"中期",stageMonth:"7〜8ヶ月",category:"葉物野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["カルシウム","鉄分","βカロテン","ビタミンC","葉酸"],effects:{カルシウム:"骨・歯の発達に関わるミネラルの供給源。ほうれん草よりカルシウム含有量が多い",鉄分:"植物性鉄分（非ヘム鉄）を含む",βカロテン:"体内でビタミンAに変換される栄養素の供給源",ビタミンC:"鉄分吸収を助けるビタミンの供給源",葉酸:"細胞分裂・DNA合成に必要なビタミンB群の供給源"},notes:{},process:["よく洗う","茹でる（アクが少ないため水さらし不要）","葉の部分を使う","みじん切り→ペースト"],tags:["アク少ない","カルシウム豊富"],note:"ほうれん草よりアクが少なく扱いやすい。"},
+{id:32,name:"キャベツ",emoji:"🥬",stage:"初期",stageMonth:"5〜6ヶ月",category:"葉物野菜",allergy:null,allergyName:null,allergyNote:null,nutrients:["ビタミンC","ビタミンK","食物繊維","葉酸"],effects:{ビタミンC:"鉄分吸収を助けるビタミンの供給源",ビタミンK:"血液凝固と骨の形成に関わるビタミンの供給源",食物繊維:"腸内環境に関わる栄養素を含む",葉酸:"細胞分裂・DNA合成に必要なビタミンB群の供給源"},notes:{},process:["葉の柔らかい部分を選ぶ","やわらかく茹でる","芯・筋を除く","みじん切り→ペースト"],tags:["クセなし","芯は除く"],note:"芯と硬い筋を除いて使う。"},
+{id:33,name:"バナナ",emoji:"🍓",stage:"初期",stageMonth:"5〜6ヶ月",category:"果物",allergy:2,allergyName:"バナナ",allergyNote:"バナナは特定原材料に準ずる20品目のひとつ（表示推奨）。口腔アレルギー症候群の原因になることがある。ラテックスアレルギーとの交差反応が知られている。",nutrients:["カリウム","食物繊維","ビタミンB6","糖質"],effects:{カリウム:"体内の電解質バランスに関わるミネラルの供給源",食物繊維:"腸内環境に関わる栄養素を含む（離乳食量では微量）",ビタミンB6:"たんぱく質の代謝に関わるビタミンの供給源",糖質:"素早く使われるエネルギー源"},notes:{食物繊維:"バナナの食物繊維量は100gあたり約1.1g。離乳食の使用量（20〜30g程度）では摂取量は微量になる。"},process:["皮をむく","熟したものを選ぶ","フォークでつぶす","必要に応じて湯でのばす"],tags:["加熱不要","甘い","準ずる品目"],note:"加熱不要で手軽。糖質が多いため量に注意。"},
+{id:34,name:"りんご",emoji:"🍓",stage:"初期",stageMonth:"5〜6ヶ月",category:"果物",allergy:2,allergyName:"りんご",allergyNote:"りんごは特定原材料に準ずる20品目のひとつ（表示推奨）。口腔アレルギー症候群の原因になることがある。シラカバ等の花粉アレルギーとの交差反応が知られている。加熱するとアレルゲン性が低下する場合がある。",nutrients:["食物繊維（ペクチン）","ビタミンC","カリウム"],effects:{"食物繊維（ペクチン）":"腸内細菌のエサになる水溶性食物繊維の供給源。加熱すると溶け出しやすくなる",ビタミンC:"鉄分吸収を助けるビタミンの供給源",カリウム:"電解質バランスに関わるミネラルの供給源"},notes:{"食物繊維（ペクチン）":"加熱してもペクチンの量は増えない。加熱により細胞壁が壊れ溶け出しやすくなる。"},process:["皮と種を除く","すりおろす（生食可）","または柔らかく煮る"],tags:["すりおろし可","準ずる品目"],note:"ポリフェノールも微量含むが、離乳食量での摂取は極めて少ない。"},
+{id:35,name:"もも",emoji:"🍓",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"果物",allergy:2,allergyName:"もも",allergyNote:"ももは特定原材料に準ずる20品目のひとつ（表示推奨）。口腔アレルギー症候群の原因になることがある。シラカバ・ハンノキ花粉との交差反応が知られている。",nutrients:["ビタミンC","カリウム","食物繊維","葉酸"],effects:{ビタミンC:"鉄分吸収を助けるビタミンの供給源",カリウム:"電解質バランスに関わるミネラルの供給源",食物繊維:"腸内環境に関わる栄養素を含む",葉酸:"細胞分裂・DNA合成に必要なビタミンの供給源"},notes:{},process:["皮をむく","種を取る","すりおろすまたは加熱してペースト","缶詰は糖分が多いため不向き"],tags:["生果を選ぶ","準ずる品目"],note:"缶詰は糖分・添加物が多いため生の果物を使う。"},
+{id:36,name:"みかん・オレンジ",emoji:"🍓",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"果物",allergy:2,allergyName:"オレンジ",allergyNote:"オレンジは特定原材料に準ずる20品目のひとつ（表示推奨）。みかんは準ずる品目ではないが柑橘類全般に口腔アレルギー症候群の報告がある。酸味が胃腸を刺激することがあるため少量から。",nutrients:["ビタミンC","カリウム","葉酸"],effects:{ビタミンC:"鉄分吸収を助けるビタミンの供給源",カリウム:"電解質バランスに関わるミネラルの供給源",葉酸:"細胞分裂・DNA合成に必要なビタミンの供給源"},notes:{},process:["薄皮・種・白い筋を除く","絞り汁（少量）または果肉ペースト","酸味が強ければ湯で薄める"],tags:["酸味注意","準ずる品目","薄皮除く"],note:"酸味が強いため最初は少量。薄皮・筋を必ず除く。"},
+{id:37,name:"いちご",emoji:"🍓",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"果物",allergy:null,allergyName:null,allergyNote:"特定原材料・準ずる品目には含まれないが、種（つぶつぶ）が消化しにくい場合がある。口腔アレルギー症候群の報告もある。初めては少量から。",nutrients:["ビタミンC","葉酸","食物繊維","カリウム"],effects:{ビタミンC:"果物の中でも含有量が多い。鉄分吸収を助けるビタミンの供給源",葉酸:"細胞分裂・DNA合成に必要なビタミンの供給源",食物繊維:"腸内環境に関わる栄養素を含む",カリウム:"電解質バランスに関わるミネラルの供給源"},notes:{},process:["ヘタを取る","裏ごしして種を除く","または加熱してペースト"],tags:["ビタミンC豊富","種除く"],note:"種が消化しにくいため裏ごしするか加熱する。"},
+{id:38,name:"梨",emoji:"🍓",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"果物",allergy:null,allergyName:null,allergyNote:"シラカバ花粉との交差反応による口腔アレルギー症候群の報告がある。",nutrients:["ビタミンC","カリウム","食物繊維","水分"],effects:{ビタミンC:"鉄分吸収を助けるビタミンの供給源",カリウム:"電解質バランスに関わるミネラルの供給源",食物繊維:"腸内環境に関わる栄養素を含む",水分:"水分補給に寄与"},notes:{},process:["皮をむく","種とヘタを除く","すりおろすまたは加熱","石細胞（ざらつき）が残る場合は裏ごし"],tags:["すりおろし可","水分多い","石細胞注意"],note:"石細胞（ざらつき）が残る場合は裏ごしすると食べやすい。"},
+{id:39,name:"ぶどう",emoji:"🍓",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"果物",allergy:null,allergyName:null,allergyNote:"皮と種は消化しにくく窒息リスクもあるため必ず除くこと。粒は小さく切るかつぶすこと。",nutrients:["ブドウ糖・果糖","カリウム","ビタミンC"],effects:{"ブドウ糖・果糖":"素早く吸収されるエネルギー源",カリウム:"電解質バランスに関わるミネラルの供給源",ビタミンC:"鉄分吸収を助けるビタミンを微量含む"},notes:{},process:["皮と種を必ず除く","4等分以上に切るまたはつぶす","丸のまま与えない"],tags:["皮・種除去必須","丸のまま厳禁","窒息注意"],note:"皮と種を必ず除く。丸のまま与えると窒息の危険がある。"},
+{id:40,name:"キウイ",emoji:"🍓",stage:"後期",stageMonth:"9〜11ヶ月",category:"果物",allergy:2,allergyName:"キウイフルーツ",allergyNote:"キウイフルーツは特定原材料に準ずる20品目のひとつ（表示推奨）。アレルギー反応が比較的強く出ることがある。ラテックスアレルギーとの交差反応が知られている。初めては必ず少量から。",nutrients:["ビタミンC","食物繊維","葉酸","カリウム"],effects:{ビタミンC:"果物の中でも特に含有量が多い。鉄分吸収を助けるビタミンの供給源",食物繊維:"腸内環境に関わる栄養素を含む",葉酸:"細胞分裂・DNA合成に必要なビタミンの供給源",カリウム:"電解質バランスに関わるミネラルの供給源"},notes:{},process:["皮をむく","種を除く","細かく刻むまたはペースト"],tags:["準ずる品目","ビタミンC豊富","後期から","アレルギー注意"],note:"アレルギー反応が比較的強い食材。後期以降に少量から慎重に。"},
+{id:41,name:"すいか",emoji:"🍓",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"果物",allergy:null,allergyName:null,allergyNote:null,nutrients:["水分","カリウム","ビタミンC"],effects:{水分:"水分補給に寄与",カリウム:"電解質バランスに関わるミネラルの供給源",ビタミンC:"鉄分吸収を助けるビタミンを微量含む"},notes:{},process:["種を丁寧に除く","皮を取る","ペースト状またはそのまま（中期以降）"],tags:["水分多い","種除く","糖分注意"],note:"種を必ず除く。糖分が高いため量に注意。"},
+{id:42,name:"しらす",emoji:"🐟",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"魚介類",allergy:2,allergyName:"魚類（いわし等）",allergyNote:"しらすはイワシ・カタクチイワシ等の稚魚。魚類は準ずる品目ではないが乳幼児期の魚アレルギーは一定数報告されている。初めては少量から。",nutrients:["カルシウム","たんぱく質","DHA","ビタミンD"],effects:{カルシウム:"骨・歯の発育を支えるミネラルの供給源",たんぱく質:"体の組織の構成に必要な栄養素の供給源",DHA:"脳・神経組織に多く含まれる必須脂肪酸の供給源",ビタミンD:"カルシウムの腸管吸収を助けるビタミンの供給源"},notes:{DHA:"離乳食量での摂取量は微量。母乳・育児用ミルクが主な供給源。"},process:["塩抜きのため熱湯をかける（製品により複数回）","水気を切る","みじん切り","粥や野菜に混ぜる"],tags:["塩抜き必要","加熱済み製品を選ぶ"],note:"必ず塩抜きをすること。生しらすはリステリア菌リスクがあるため不向き。"},
+{id:43,name:"たら",emoji:"🐟",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"魚介類",allergy:2,allergyName:"魚類",allergyNote:"魚類は準ずる品目ではないが乳幼児の魚アレルギーは報告されている。白身魚の中では比較的アレルギーが少ないとされるが個人差がある。",nutrients:["たんぱく質","ビタミンD","ビタミンB12"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源。脂肪が少なく消化への負担が比較的小さい",ビタミンD:"カルシウム吸収を助けるビタミンの供給源",ビタミンB12:"神経機能・赤血球の生成に関わるビタミンの供給源"},notes:{},process:["皮・骨を念入りに除く","沸騰した湯で茹でる","完全加熱","ほぐしてペーストまたはみじん切り"],tags:["白身魚","低脂肪","骨除去念入りに"],note:"最初の魚食材として適している。骨は念入りに除くこと。"},
+{id:44,name:"かれい",emoji:"🐟",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"魚介類",allergy:2,allergyName:"魚類",allergyNote:"魚類は準ずる品目ではないが乳幼児の魚アレルギーは報告されている。たらと並ぶ離乳食向き白身魚。",nutrients:["たんぱく質","ビタミンD","ビタミンB12"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源。脂肪が少なく消化への負担が比較的小さい",ビタミンD:"カルシウム吸収を助けるビタミンの供給源",ビタミンB12:"神経機能・赤血球の生成に関わるビタミンの供給源"},notes:{},process:["皮・骨を念入りに除く","茹でるまたは蒸す","完全加熱","ほぐしてペーストまたはみじん切り"],tags:["白身魚","低脂肪","骨除去念入りに"],note:"たらと並ぶ離乳食向き白身魚。骨を念入りに除くこと。"},
+{id:45,name:"鮭（さけ）",emoji:"🐟",stage:"中期",stageMonth:"7〜8ヶ月",category:"魚介類",allergy:2,allergyName:"さけ・さーもん",allergyNote:"さけは特定原材料に準ずる20品目のひとつ（表示推奨）。初めては少量から。",nutrients:["たんぱく質","DHA・EPA","ビタミンD","ビタミンB12"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源","DHA・EPA":"脳・神経組織に多く含まれる必須脂肪酸の供給源",ビタミンD:"カルシウム吸収を助けるビタミンの供給源",ビタミンB12:"神経機能・赤血球の生成に関わるビタミンの供給源"},notes:{"DHA・EPA":"離乳食量での摂取は微量。"},process:["皮・骨を念入りに除く","塩鮭は使わない（生鮭を使用）","茹でるまたは蒸す","完全加熱後ほぐす"],tags:["骨除去念入りに","塩鮭不可","準ずる品目"],note:"塩鮭は塩分が多く不向き。必ず生鮭を使い完全に加熱する。"},
+{id:46,name:"まぐろ",emoji:"🐟",stage:"後期",stageMonth:"9〜11ヶ月",category:"魚介類",allergy:2,allergyName:"魚類",allergyNote:"魚類は準ずる品目ではないが乳幼児の魚アレルギーは報告されている。まぐろは大型魚のため水銀（メチル水銀）の蓄積があり、乳幼児は週1〜2回程度・少量にとどめることが厚生労働省により推奨されている。",nutrients:["たんぱく質","DHA・EPA","鉄分（ヘム鉄）","ビタミンB12"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源","DHA・EPA":"脳・神経組織に多く含まれる必須脂肪酸の供給源","鉄分（ヘム鉄）":"動物性鉄分で吸収率が高い",ビタミンB12:"神経機能・赤血球の生成に関わるビタミンの供給源"},notes:{"DHA・EPA":"離乳食量での摂取は微量。水銀蓄積があるため頻度・量に注意が必要。"},process:["刺身・生食用は使わない","茹でてほぐすまたは缶詰（食塩不使用ノンオイル）","週1〜2回・少量にとどめる"],tags:["水銀注意","後期から","週1〜2回まで"],note:"大型魚のため水銀蓄積あり。週1〜2回・少量にとどめること（厚労省推奨）。"},
+{id:47,name:"あじ",emoji:"🐟",stage:"中期",stageMonth:"7〜8ヶ月",category:"魚介類",allergy:2,allergyName:"魚類",allergyNote:"魚類は準ずる品目ではないが乳幼児の魚アレルギーは報告されている。青魚はヒスタミン中毒（新鮮でない場合）のリスクもあるため鮮度に注意。",nutrients:["たんぱく質","DHA・EPA","ビタミンD","ビタミンB12"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源","DHA・EPA":"脳・神経組織に多く含まれる必須脂肪酸の供給源",ビタミンD:"カルシウム吸収を助けるビタミンの供給源",ビタミンB12:"神経機能・赤血球の生成に関わるビタミンの供給源"},notes:{"DHA・EPA":"離乳食量での摂取は微量。"},process:["皮・骨を念入りに除く","新鮮なものを選ぶ","茹でるまたは蒸す","完全加熱後ほぐす"],tags:["青魚","鮮度に注意","骨除去念入りに"],note:"鮮度の良いものを選ぶ。骨は念入りに除くこと。"},
+{id:48,name:"ぶり",emoji:"🐟",stage:"後期",stageMonth:"9〜11ヶ月",category:"魚介類",allergy:2,allergyName:"魚類",allergyNote:"魚類は準ずる品目ではないが青魚はアレルギー報告が比較的多い。ヒスタミン中毒のリスクもあるため鮮度に注意。",nutrients:["たんぱく質","DHA・EPA","ビタミンD","ビタミンB12"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源","DHA・EPA":"脳・神経組織に多く含まれる必須脂肪酸の供給源",ビタミンD:"カルシウム吸収を助けるビタミンの供給源",ビタミンB12:"神経機能・赤血球の生成に関わるビタミンの供給源"},notes:{"DHA・EPA":"離乳食量での摂取は微量。"},process:["皮・骨を念入りに除く","新鮮なものを選ぶ","茹でるまたは蒸す","完全加熱後ほぐす"],tags:["青魚","後期から","鮮度に注意"],note:"脂が多く風味が強いため後期から。鮮度の良いものを選ぶ。"},
+{id:49,name:"ツナ缶",emoji:"🐟",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"魚介類",allergy:2,allergyName:"魚類（まぐろ等）",allergyNote:"原料はまぐろ・かつおが多い。魚アレルギーの可能性がある。まぐろは大型魚のため水銀蓄積のリスクがあり週1〜2回・少量にとどめること（厚労省推奨）。",nutrients:["たんぱく質","DHA・EPA","ビタミンB12"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源","DHA・EPA":"脳・神経組織に多く含まれる必須脂肪酸の供給源",ビタミンB12:"神経機能・赤血球の生成に関わるビタミンの供給源"},notes:{"DHA・EPA":"離乳食量での摂取は微量。"},process:["食塩不使用・ノンオイルタイプを選ぶ","湯通しして塩分・油分を除く","週1〜2回・少量にとどめる"],tags:["食塩不使用・ノンオイルを選ぶ","水銀注意（週1〜2回まで）"],note:"必ず食塩不使用・ノンオイルを選ぶ。まぐろ原料の場合は水銀に注意。"},
+{id:50,name:"鶏ささみ",emoji:"🥩",stage:"中期",stageMonth:"7〜8ヶ月",category:"肉類",allergy:2,allergyName:"鶏肉",allergyNote:"鶏肉は特定原材料に準ずる20品目のひとつ（表示推奨）。初めては少量から。",nutrients:["たんぱく質","ビタミンB6","ナイアシン"],effects:{たんぱく質:"筋肉・臓器など体の組織の構成に必要な栄養素の供給源",ビタミンB6:"たんぱく質・アミノ酸の代謝に関わるビタミンの供給源",ナイアシン:"エネルギー代謝に関わるビタミンB群の供給源"},notes:{},process:["筋を除く","沸騰した湯で茹でる","完全加熱","細かくほぐす","すりこぎでなめらかに"],tags:["低脂肪","高たんぱく","加熱必須","準ずる品目"],note:"脂肪が少なく消化しやすい。必ず完全に加熱すること。"},
+{id:51,name:"鶏むね肉",emoji:"🥩",stage:"中期",stageMonth:"7〜8ヶ月",category:"肉類",allergy:2,allergyName:"鶏肉",allergyNote:"鶏肉は特定原材料に準ずる20品目のひとつ（表示推奨）。",nutrients:["たんぱく質","ビタミンB6","ナイアシン"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源",ビタミンB6:"たんぱく質代謝に関わるビタミンの供給源",ナイアシン:"エネルギー代謝に関わるビタミンB群の供給源"},notes:{},process:["皮を除く","完全加熱","ほぐしてみじん切り","パサつく場合は汁に浸す"],tags:["低脂肪","皮は除く","加熱必須","準ずる品目"],note:"ささみより若干脂肪が多い。皮を取り除いて使う。"},
+{id:52,name:"鶏レバー",emoji:"🥩",stage:"後期",stageMonth:"9〜11ヶ月",category:"肉類",allergy:2,allergyName:"鶏肉",allergyNote:"鶏肉は特定原材料に準ずる20品目のひとつ（表示推奨）。レバーはビタミンAが非常に豊富なため過剰摂取にならないよう週1〜2回・少量（10〜15g程度）にとどめること。",nutrients:["鉄分（ヘム鉄）","ビタミンA","ビタミンB12","葉酸","たんぱく質"],effects:{"鉄分（ヘム鉄）":"動物性鉄分で吸収率が高い。鉄欠乏性貧血の予防に関わる栄養素の供給源",ビタミンA:"皮膚・粘膜の維持や視力に関わる栄養素の供給源",ビタミンB12:"神経機能・赤血球の生成に関わるビタミンの供給源",葉酸:"細胞分裂・DNA合成に必要なビタミンの供給源",たんぱく質:"体の組織の構成に必要な栄養素の供給源"},notes:{ビタミンA:"レバーはビタミンAが非常に豊富。過剰摂取は乳幼児に有害なため週1〜2回・10〜15g程度にとどめること。"},process:["血抜きのため牛乳または水に30分浸す","流水でよく洗う","完全加熱（中心まで）","すりつぶしてペースト","週1〜2回・少量"],tags:["ヘム鉄豊富","ビタミンA過剰注意","週1〜2回・10〜15g","後期から","準ずる品目"],note:"鉄分補給に有用だが、ビタミンA過剰摂取にならないよう週1〜2回・少量（10〜15g程度）にとどめること。"},
+{id:53,name:"豚ひき肉",emoji:"🥩",stage:"後期",stageMonth:"9〜11ヶ月",category:"肉類",allergy:null,allergyName:null,allergyNote:null,nutrients:["たんぱく質","ビタミンB1","亜鉛","鉄分（ヘム鉄）"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源",ビタミンB1:"糖質代謝に関わるビタミンの供給源。肉類の中で特に豊富",亜鉛:"免疫機能や味覚に関わるミネラルの供給源","鉄分（ヘム鉄）":"動物性鉄分で吸収率が高い"},notes:{},process:["脂肪の少ないものを選ぶ","完全加熱","汁物や野菜と混ぜる"],tags:["ビタミンB1豊富","ヘム鉄含む","後期から","加熱必須"],note:"脂肪分が多いため後期から少量ずつ。完全加熱必須。"},
+{id:54,name:"牛ひき肉",emoji:"🥩",stage:"後期",stageMonth:"9〜11ヶ月",category:"肉類",allergy:null,allergyName:null,allergyNote:null,nutrients:["たんぱく質","鉄分（ヘム鉄）","亜鉛","ビタミンB12"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源","鉄分（ヘム鉄）":"動物性鉄分で吸収率が高い。貧血予防に関わる栄養素の供給源",亜鉛:"免疫機能や味覚に関わるミネラルの供給源",ビタミンB12:"神経機能・赤血球の生成に関わるビタミンの供給源"},notes:{},process:["脂肪の少ないものを選ぶ","完全加熱","汁物や野菜と混ぜる"],tags:["ヘム鉄豊富","後期から","加熱必須"],note:"脂肪が多いため少量から。完全加熱必須。"},
+{id:55,name:"豆腐",emoji:"🫘",stage:"初期",stageMonth:"5〜6ヶ月",category:"大豆製品",allergy:2,allergyName:"大豆",allergyNote:"大豆は特定原材料に準ずる20品目のひとつ（表示推奨）。大豆アレルギーは乳幼児に比較的多い。初めては少量から。",nutrients:["たんぱく質","カルシウム","鉄分","大豆イソフラボン"],effects:{たんぱく質:"筋肉・臓器など体の組織の構成に必要な栄養素の供給源",カルシウム:"骨・歯の発達に関わるミネラルの供給源",鉄分:"植物性鉄分（非ヘム鉄）を含む",大豆イソフラボン:"骨密度維持への関与が知られている成分"},notes:{大豆イソフラボン:"成人女性を対象とした研究知見。乳幼児への効果のエビデンスはまだ確立されていません。"},process:["絹ごし豆腐を選ぶ","熱湯で1〜2分茹でる","水気を切る","フォークでつぶしてペースト"],tags:["たんぱく源","絹ごし推奨","準ずる品目"],note:"初めてのたんぱく質食材として最適。絹ごしを使うこと。"},
+{id:56,name:"納豆",emoji:"🫘",stage:"中期",stageMonth:"7〜8ヶ月",category:"大豆製品",allergy:2,allergyName:"大豆",allergyNote:"大豆は特定原材料に準ずる20品目のひとつ（表示推奨）。",nutrients:["たんぱく質","ビタミンK2","食物繊維","鉄分"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源",ビタミンK2:"骨の形成に関わるビタミンの供給源",食物繊維:"腸内環境に関わる栄養素を含む",鉄分:"植物性鉄分（非ヘム鉄）を含む"},notes:{},process:["ひきわり納豆を選ぶ","付属のたれは使わない（塩分）","細かく刻む"],tags:["ひきわり推奨","たれ不使用","準ずる品目"],note:"付属のたれは使用しない。ひきわりが扱いやすい。"},
+{id:57,name:"高野豆腐",emoji:"🫘",stage:"中期",stageMonth:"7〜8ヶ月",category:"大豆製品",allergy:2,allergyName:"大豆",allergyNote:"大豆は特定原材料に準ずる20品目のひとつ（表示推奨）。",nutrients:["たんぱく質","カルシウム","鉄分","食物繊維"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源。豆腐より凝縮",カルシウム:"骨・歯の発達に関わるミネラルの供給源。豆腐より含有量が多い",鉄分:"植物性鉄分（非ヘム鉄）を含む。大豆製品の中でも比較的豊富",食物繊維:"腸内環境に関わる栄養素を含む"},notes:{},process:["水またはだし汁で戻す","よく絞る","すりおろしてペーストまたはみじん切り","粥や野菜に混ぜる"],tags:["栄養凝縮","鉄分豊富","準ずる品目"],note:"普通の豆腐より栄養が凝縮されている。粉末タイプが使いやすい。"},
+{id:58,name:"きな粉",emoji:"🫘",stage:"中期",stageMonth:"7〜8ヶ月",category:"大豆製品",allergy:2,allergyName:"大豆",allergyNote:"大豆は特定原材料に準ずる20品目のひとつ（表示推奨）。大豆アレルギーがある場合は注意。",nutrients:["たんぱく質","食物繊維","鉄分","カルシウム"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源",食物繊維:"腸内環境に関わる栄養素を含む",鉄分:"植物性鉄分（非ヘム鉄）を含む",カルシウム:"骨・歯の発達に関わるミネラルの供給源"},notes:{},process:["無糖・無塩のものを選ぶ","少量を粥や野菜に混ぜる","水分と合わせてペースト状に"],tags:["無糖・無塩を選ぶ","準ずる品目"],note:"無糖・無塩のものを選ぶ。少量をトッピングとして使いやすい。"},
+{id:59,name:"卵（卵黄）",emoji:"🥚",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"卵・乳製品",allergy:1,allergyName:"卵",allergyNote:"卵は特定原材料8品目のひとつ（表示義務）。乳幼児の食物アレルギーの中で最も頻度が高い。必ず固ゆでにして卵黄のみから開始し、少量ずつ進めること。卵白は卵黄より強いアレルゲンを含むため全卵は中期以降。",nutrients:["たんぱく質","ビタミンD","ビタミンA","鉄分"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源",ビタミンD:"カルシウム吸収を助けるビタミンの供給源",ビタミンA:"皮膚・粘膜の維持や視力に関わる栄養素の供給源",鉄分:"鉄分を含む（非ヘム鉄）"},notes:{},process:["必ず固ゆでにする（半熟不可）","卵黄のみ取り出す","耳かき1杯程度から開始","1週間かけて1個分の卵黄へ増量"],tags:["卵黄から開始","固ゆで必須","特定原材料","少量から慎重に"],note:"乳幼児で最も多いアレルギー食材。固ゆで卵黄のみから開始し慎重に進める。"},
+{id:60,name:"全卵",emoji:"🥚",stage:"中期",stageMonth:"7〜8ヶ月",category:"卵・乳製品",allergy:1,allergyName:"卵",allergyNote:"卵白は卵黄より強いアレルゲン（オボアルブミン等）を含む。卵黄をクリアした後に少量から開始。完全加熱が必須。",nutrients:["たんぱく質","ビタミンD","ビタミンA","ビタミンB12","鉄分"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源",ビタミンD:"カルシウム吸収を助けるビタミンの供給源",ビタミンA:"皮膚・粘膜の維持や視力に関わる栄養素の供給源",ビタミンB12:"神経機能・赤血球の生成に関わるビタミンの供給源",鉄分:"鉄分を含む（非ヘム鉄）"},notes:{},process:["固ゆで必須（半熟・生は不可）","卵黄クリア後に移行","まず卵白少量から"],tags:["特定原材料","完全加熱必須","卵黄後に開始"],note:"卵黄をクリアしてから移行。半熟・生は厳禁。"},
+{id:61,name:"プレーンヨーグルト",emoji:"🥚",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"卵・乳製品",allergy:1,allergyName:"乳",allergyNote:"乳（牛乳）は特定原材料8品目のひとつ（表示義務）。乳アレルギーの子には不可。必ずプレーン・無糖を選ぶ。",nutrients:["たんぱく質","カルシウム","乳酸菌","ビタミンB2"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源",カルシウム:"骨・歯の発達に関わるミネラルの供給源",乳酸菌:"腸内細菌叢に影響する生菌を含む（効果には個人差あり）",ビタミンB2:"エネルギー代謝に関わるビタミンの供給源"},notes:{乳酸菌:"乳幼児での効果は個人差が大きく確立されたエビデンスは限定的。"},process:["プレーン・無糖を選ぶ","加熱不要","そのまま与える","果物ペーストと合わせる"],tags:["無糖を選ぶ","特定原材料（乳）","加熱不要"],note:"必ずプレーン・無糖を選ぶ。"},
+{id:62,name:"カッテージチーズ",emoji:"🥚",stage:"初期後半",stageMonth:"6〜7ヶ月",category:"卵・乳製品",allergy:1,allergyName:"乳",allergyNote:"乳（牛乳）は特定原材料8品目のひとつ（表示義務）。チーズの中では塩分・脂肪分が比較的少なくカッテージチーズが離乳食向き。",nutrients:["たんぱく質","カルシウム","ビタミンB2"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源",カルシウム:"骨・歯の発達に関わるミネラルの供給源",ビタミンB2:"エネルギー代謝に関わるビタミンの供給源"},notes:{},process:["プレーンタイプを選ぶ","塩分量を確認（無塩タイプ推奨）","野菜ペーストや粥に混ぜる"],tags:["特定原材料（乳）","塩分少ない","無塩タイプ推奨"],note:"チーズの中では塩分・脂肪が少なくおすすめ。"},
+{id:63,name:"粉チーズ（パルメザン）",emoji:"🥚",stage:"後期",stageMonth:"9〜11ヶ月",category:"卵・乳製品",allergy:1,allergyName:"乳",allergyNote:"乳（牛乳）は特定原材料8品目のひとつ（表示義務）。粉チーズは塩分・脂肪分が多いため少量の風味づけにとどめること。",nutrients:["カルシウム","たんぱく質","ビタミンB2"],effects:{カルシウム:"骨・歯の発達に関わるミネラルの供給源。チーズ類の中でも含有量が多い",たんぱく質:"体の組織の構成に必要な栄養素の供給源",ビタミンB2:"エネルギー代謝に関わるビタミンの供給源"},notes:{},process:["少量を風味づけに使う","粥・野菜・肉料理に混ぜる","塩分が多いため使いすぎない"],tags:["特定原材料（乳）","少量の風味づけに","後期から"],note:"塩分・脂肪が多いため少量の風味づけにとどめること。"},
+{id:64,name:"牛乳（調理用）",emoji:"🥚",stage:"後期",stageMonth:"9〜11ヶ月",category:"卵・乳製品",allergy:1,allergyName:"乳",allergyNote:"乳（牛乳）は特定原材料8品目のひとつ（表示義務）。飲み物としての牛乳は1歳以降推奨。鉄分の吸収を阻害する可能性があるため与えすぎに注意。",nutrients:["たんぱく質","カルシウム","ビタミンD","ビタミンB2"],effects:{たんぱく質:"体の組織の構成に必要な栄養素の供給源",カルシウム:"骨・歯の発達に関わるミネラルの供給源",ビタミンD:"カルシウム吸収を助けるビタミンの供給源",ビタミンB2:"エネルギー代謝に関わるビタミンの供給源"},notes:{カルシウム:"牛乳の大量摂取は鉄分の吸収を阻害する可能性があるとされる。調理用は少量にとどめる。"},process:["飲み物としては1歳以降","後期からスープ・グラタン等の調理に少量使用可","加熱して使う"],tags:["特定原材料（乳）","飲み物は1歳以降","調理用は後期から"],note:"飲み物としての使用は1歳以降。調理用は後期から少量。"},
+];
+
+const NUTRIENTS_GUIDE=[
+{name:"鉄分",effect:"赤血球の材料となり、全身への酸素運搬に関わる。6ヶ月以降は母乳中の鉄分量が減少するため離乳食からの補給が重要になる。植物性（非ヘム鉄）はビタミンCと組み合わせると吸収されやすくなる。動物性（ヘム鉄）は吸収率が高い。",foods:["ほうれん草","小松菜","ブロッコリー","豆腐","納豆","高野豆腐","きな粉","しらす","まぐろ","鶏レバー","牛ひき肉","卵（卵黄）","オートミール"]},
+{name:"カルシウム",effect:"骨・歯の発達に不可欠なミネラル。ビタミンDと同時に摂ると腸管での吸収が助けられる。",foods:["豆腐","高野豆腐","しらす","ブロッコリー","小松菜","チンゲン菜","プレーンヨーグルト","カッテージチーズ","粉チーズ（パルメザン）","牛乳（調理用）"]},
+{name:"βカロテン",effect:"体内でビタミンAに変換される。皮膚・粘膜の維持や視力に関わる栄養素の供給源。脂溶性のため油と一緒に摂ると吸収されやすい。",foods:["にんじん","かぼちゃ","さつまいも","パプリカ","ズッキーニ","ほうれん草","小松菜","チンゲン菜"]},
+{name:"DHA・EPA",effect:"脳・神経組織に多く含まれる必須脂肪酸。離乳食量での摂取は微量で、主な供給源は母乳・育児用ミルク。まぐろは水銀蓄積があるため週1〜2回・少量にとどめること。",foods:["しらす","たら","かれい","あじ","鮭（さけ）","ぶり","まぐろ","ツナ缶"]},
+{name:"ビタミンC",effect:"鉄分（非ヘム鉄）の吸収を助ける働きを持つ。抗酸化作用を持つビタミン。水溶性のため加熱で一部失われる。",foods:["ブロッコリー","パプリカ","小松菜","キャベツ","いちご","キウイ","みかん・オレンジ","トマト","じゃがいも","枝豆"]},
+{name:"食物繊維",effect:"腸内細菌のエサになり、腸内環境に関わる。離乳食量での摂取は少量になることが多い。",foods:["さつまいも","かぼちゃ","ブロッコリー","オートミール","ごぼう","レンコン","りんご","バナナ","納豆","きな粉","枝豆"]},
+{name:"葉酸",effect:"細胞分裂・DNA合成に必要なビタミンB群。発育が活発な乳幼児期に特に必要な栄養素。",foods:["ほうれん草","ブロッコリー","小松菜","いちご","もも","みかん・オレンジ","アスパラガス","枝豆","鶏レバー"]},
+{name:"たんぱく質",effect:"筋肉・臓器・免疫細胞など体の組織の構成に不可欠な栄養素。動物性と植物性をバランスよく摂ることが望ましい。",foods:["鶏ささみ","鶏むね肉","豚ひき肉","牛ひき肉","鶏レバー","たら","かれい","鮭（さけ）","まぐろ","あじ","豆腐","納豆","高野豆腐","きな粉","卵（卵黄）","全卵","プレーンヨーグルト"]},
+];
+
+const STAGES=[
+{name:"ごっくん期（初期）",month:"5〜6ヶ月",stageKey:"初期",desc:"なめらかなペースト状。まず1さじから慣らす。"},
+{name:"もぐもぐ期（中期）",month:"7〜8ヶ月",stageKey:"中期",desc:"舌でつぶせる豆腐くらいの固さ。2回食に。"},
+{name:"かみかみ期（後期）",month:"9〜11ヶ月",stageKey:"後期",desc:"歯ぐきでつぶせるバナナくらい。3回食に。"},
+{name:"ぱくぱく期（完了期）",month:"12〜18ヶ月",stageKey:"完了期",desc:"歯でかめる普通食に近づけていく時期。"},
+];
+
+let currentTab="list",currentFood=null,searchQuery="",currentCategory="すべて";
+
+function bc(s){return s==="初期"||s==="初期後半"?"bg":s==="中期"?"ba":"br";}
+const CAT_BG={"穀類":"#fef3e0","いも類":"#f5ede0","野菜":"#e8f5e0","葉物野菜":"#e0f0e8","果物":"#fde8f0","魚介類":"#e8f0ff","肉類":"#fdeae8","大豆製品":"#f0f0ff","卵・乳製品":"#fffbe0"};
+function catBg(cat){return CAT_BG[cat]||"var(--peach-50)";}
+function catIcon(f){return`<span class="em-wrap" style="background:${catBg(f.category)}">${f.emoji}</span>`;}
+function alBadge(f){
+  if(!f.allergy)return"";
+  const cls=f.allergy===1?"al1":"al2";
+  const label=f.allergy===1?"特定原材料":"準ずる品目";
+  return`<span class="badge ${cls}">⚠ ${label}</span>`;
+}
+function renderLegend(){return`<div class="al-legend"><div class="al-legend-item"><span class="badge al1">⚠ 特定原材料</span><span>表示義務8品目</span></div><div class="al-legend-item"><span class="badge al2">⚠ 準ずる品目</span><span>表示推奨20品目</span></div></div>`;}
+function renderFilters(){
+  if(currentTab!=="list")return"";
+  return`<div class="filter-row">${CATEGORIES.map(c=>`<button class="filter-btn${c===currentCategory?" active":""}" onclick="setCategory('${c}')">${c}</button>`).join("")}</div>`;
+}
+function setCategory(cat){currentCategory=cat;render();}
+function renderList(foods){
+  if(!foods.length)return`<div class="empty"><div class="empty-icon">🔍</div>「${searchQuery}」に一致する食材が見つかりませんでした</div>`;
+  return renderLegend()+`<div class="result-count">${foods.length}件の食材</div><div class="grid">${foods.map(f=>`<div class="card" onclick="showDetail(${f.id})">${catIcon(f)}<div class="card-body"><div class="card-name">${f.name}</div><div class="card-badges"><span class="badge ${bc(f.stage)}">${f.stageMonth}</span>${alBadge(f)}</div><div class="card-desc">${f.note}</div></div></div>`).join("")}</div>`;
+}
+function renderAllergyBox(f){
+  if(!f.allergy)return`<div class="al-box lv0"><div class="al-box-title">特定原材料・準ずる品目には該当しません</div><div class="al-box-body">${f.allergyNote||"初めて与える食材は少量から試してください。"}</div></div>`;
+  const cls=f.allergy===1?"lv1":"lv2";
+  const label=f.allergy===1?"特定原材料（表示義務8品目）":"特定原材料に準ずる品目（表示推奨20品目）";
+  return`<div class="al-box ${cls}"><div class="al-box-title">⚠ ${label}：${f.allergyName}</div><div class="al-box-body">${f.allergyNote}</div></div>`;
+}
+function renderDetail(f){
+  const rows=f.nutrients.map(n=>{
+    const nt=f.notes&&f.notes[n]?`<div class="nnote">※ ${f.notes[n]}</div>`:"";
+    return`<div class="ni"><div class="nn">${n}</div><div class="ne">${f.effects[n]||""}</div>${nt}</div>`;
+  }).join("");
+  const steps=f.process.map((p,i)=>`<div class="step-item"><div class="step-num">${i+1}</div><div class="step-text">${p}</div></div>`).join("");
+  return`<button class="back-btn" onclick="backToList()">← 一覧に戻る</button><div class="detail"><div class="detail-header"><span class="detail-emoji-wrap" style="background:${catBg(f.category)}">${f.emoji}</span><div><div class="detail-title">${f.name}</div><div class="detail-sub">${f.stageMonth}から ／ ${f.category}</div></div></div><div class="sec"><div class="sec-label">開始時期</div><span class="badge ${bc(f.stage)}">${f.stage}（${f.stageMonth}）</span><p style="font-size:12px;color:var(--text-mid);margin-top:8px;line-height:1.75">${f.note}</p></div><div class="sec"><div class="sec-label">アレルギー情報</div>${renderAllergyBox(f)}</div><div class="sec"><div class="sec-label">含まれる栄養素と働き</div><div class="ngrid">${rows}</div></div><div class="sec"><div class="sec-label">調理・下処理の手順</div><div class="steps">${steps}</div></div><div class="sec"><div class="sec-label">特徴・注意点</div><div class="tag-row">${f.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div></div></div>`;
+}
+function renderStage(){
+  const stageDots={"初期":"#f472a8","初期後半":"#f9a8d4","中期":"#fb923c","後期":"#a78bfa","完了期":"#60a5fa"};
+  return STAGES.map(s=>{
+    const foods=s.stageKey==="初期"?FOODS.filter(f=>f.stage==="初期"||f.stage==="初期後半"):FOODS.filter(f=>f.stage===s.stageKey);
+    const dot=stageDots[s.stageKey]||"#f472a8";
+    return`<div class="stage-sec"><div class="stage-header"><div class="stage-dot" style="background:${dot}"></div><div class="stage-title">${s.name}</div><span class="stage-month-badge">${s.month}</span></div><div class="stage-desc">${s.desc}</div>${foods.length?`<div class="grid">${foods.map(f=>`<div class="card" onclick="showDetail(${f.id})">${catIcon(f)}<div class="card-body"><div class="card-name">${f.name}</div><div class="card-badges"><span class="badge ${bc(f.stage)}">${f.stageMonth}</span>${alBadge(f)}</div><div class="card-desc">${f.note}</div></div></div>`).join("")}</div>`:`<p style="font-size:12px;color:var(--text-muted)">この時期のデータは随時追加予定です</p>`}</div>`;
+  }).join("");
+}
+function renderNutrients(){
+  const q=searchQuery.toLowerCase();
+  const filtered=q?NUTRIENTS_GUIDE.filter(n=>n.name.includes(q)||n.effect.includes(q)||n.foods.some(f=>f.includes(q))):NUTRIENTS_GUIDE;
+  if(!filtered.length)return`<div class="empty"><div class="empty-icon">🔍</div>「${searchQuery}」に一致する栄養素が見つかりませんでした</div>`;
+  return`<div style="display:flex;flex-direction:column;gap:10px">${filtered.map(n=>`<div class="nutrient-card"><div class="nutrient-name">✨ ${n.name}</div><p class="nutrient-effect">${n.effect}</p><div class="sec-label">多く含む食材</div><div class="tag-row">${n.foods.map(f=>{const fd=FOODS.find(x=>x.name===f);return`<span class="tag" style="${fd?"cursor:pointer":""}" onclick="${fd?`showDetail(${fd.id})`:""}">${fd?fd.emoji:""}${f}${fd&&fd.allergy?" ⚠":""}</span>`;}).join("")}</div></div>`).join("")}</div>`;
+}
+function render(){
+  document.getElementById("filters").innerHTML=renderFilters();
+  const c=document.getElementById("content");
+  if(currentFood){c.innerHTML=renderDetail(currentFood);return;}
+  const q=searchQuery.toLowerCase();
+  if(currentTab==="list"){
+    let filtered=FOODS;
+    if(currentCategory!=="すべて")filtered=filtered.filter(f=>f.category===currentCategory);
+    if(q)filtered=filtered.filter(f=>f.name.includes(q)||f.category.includes(q)||f.nutrients.some(n=>n.includes(q))||f.tags.some(t=>t.includes(q))||f.process.some(p=>p.includes(q))||f.note.includes(q)||(f.allergyName&&f.allergyName.includes(q))||(q==="アレルギー"&&f.allergy));
+    c.innerHTML=renderList(filtered);
+  }else if(currentTab==="stage"){c.innerHTML=renderStage();}
+  else{c.innerHTML=renderNutrients();}
+}
+function showDetail(id){currentFood=FOODS.find(f=>f.id===id);render();}
+function backToList(){currentFood=null;render();}
+document.getElementById("tabs").addEventListener("click",e=>{
+  const t=e.target.closest(".tab");
+  if(!t)return;
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+  t.classList.add("active");
+  currentTab=t.dataset.tab;currentFood=null;currentCategory="すべて";render();
+});
+document.getElementById("searchInput").addEventListener("input",e=>{searchQuery=e.target.value;currentFood=null;render();});
+
+render();
+</script>
+</body>
+</html>
